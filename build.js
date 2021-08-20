@@ -14,8 +14,8 @@ const production = process.env.NODE_ENV === "production",
     });
   }
 
-  copyFile("./src/yaml.d.ts", "./dist/yaml.d.ts", (err) => {
+  copyFile("./src/json5.d.ts", "./dist/json5.d.ts", (err) => {
     if (err) throw err;
-    console.log("[yaml.d.ts] copied");
+    console.log("[json5.d.ts] copied");
   });
 })();

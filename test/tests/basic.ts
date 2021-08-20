@@ -1,4 +1,3 @@
-import yamlFile from "../assets/basic.yaml";
-import ymlFile from "../assets/basic.yml";
+import json5File from "../assets/basic.json5";
 
-console.log(yamlFile, ymlFile);
+console.log(json5File);

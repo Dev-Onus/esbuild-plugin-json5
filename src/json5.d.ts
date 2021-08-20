@@ -1,5 +1,5 @@
-// .yaml and .yml declarations
-declare module "*.yaml" {
+// .json5 declarations
+declare module "*.json5" {
   const content: {
     [key: string]: any;
   };

@@ -1,45 +1,28 @@
 import { Plugin } from "esbuild";
 import path from "path";
 import fs from "fs-extra";
-import yaml, { LoadOptions } from "js-yaml";
+import json5 from "json5";
 import { TextDecoder } from "util";
 
-interface YamlPluginOptions {
-  loadOptions?: LoadOptions;
-  transform?: (
-    data: string | number | object,
-    filePath: string
-  ) => object | undefined;
-}
-
-export const yamlPlugin = (options: YamlPluginOptions): Plugin => ({
-  name: "yaml",
+export const json5Plugin = (): Plugin => ({
+  name: "json5",
   setup(build) {
-    // resolve .yaml and .yml files
-    build.onResolve({ filter: /\.(yml|yaml)$/ }, (args) => {
+    // resolve .json5 files
+    build.onResolve({ filter: /\.json5$/ }, (args) => {
       if (args.resolveDir === "") return;
 
       return {
         path: path.isAbsolute(args.path)
           ? args.path
           : path.join(args.resolveDir, args.path),
-        namespace: "yaml"
+        namespace: "json5"
       };
     });
 
-    // load files with "yaml" namespace
-    build.onLoad({ filter: /.*/, namespace: "yaml" }, async (args) => {
-      const yamlContent = await fs.readFile(args.path);
-      let parsed = yaml.load(
-        new TextDecoder().decode(yamlContent),
-        options?.loadOptions
-      );
-
-      if (
-        options?.transform &&
-        options.transform(parsed, args.path) !== undefined
-      )
-        parsed = options.transform(parsed, args.path);
+    // load files with "json5" namespace
+    build.onLoad({ filter: /.*/, namespace: "json5" }, async (args) => {
+      const json5Content = await fs.readFile(args.path);
+      let parsed = json5.parse(new TextDecoder().decode(json5Content));
 
       return {
         contents: JSON.stringify(parsed),

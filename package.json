@@ -1,12 +1,12 @@
 {
-  "name": "esbuild-plugin-yaml",
+  "name": "esbuild-plugin-json5",
   "version": "0.0.1",
-  "description": "Convert YAML files to ES6 modules",
+  "description": "Convert JSON5 files to ES6 modules",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
   "types": "dist/index.d.ts",
-  "repository": "https://github.com/martonlederer/esbuild-plugin-yaml",
-  "author": "Marton Lederer <marton@lederer.hu>",
+  "repository": "https://github.com/Dev-Onus/esbuild-plugin-json5",
+  "author": "Yogesh Surendran <carreraphp@gmail.com>",
   "license": "MIT",
   "private": false,
   "publishConfig": {
@@ -27,12 +27,12 @@
   ],
   "dependencies": {
     "fs-extra": "^9.1.0",
-    "js-yaml": "^4.0.0"
+    "json5": "^2.2.0"
   },
   "devDependencies": {
     "@types/chai": "^4.2.15",
     "@types/fs-extra": "^9.0.7",
-    "@types/js-yaml": "^4.0.0",
+    "@types/json5": "^2.2.0",
     "@types/mocha": "^8.2.1",
     "@types/node": "^14.14.31",
     "chai": "^4.3.0",
